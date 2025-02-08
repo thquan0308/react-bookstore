@@ -14,5 +14,9 @@ export const callLogin = (username, password) => {
         username,
         password
     })
+}
 
+
+export const callFetchAccount = () => {
+    return axios.get('/api/v1/auth/account')
 }
