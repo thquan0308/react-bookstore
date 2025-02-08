@@ -15,6 +15,8 @@ import Loading from "./components/Loading";
 import NotFound from "./components/NotFound";
 import AdminPage from "./pages/admin";
 import ProtectedRoute from "./components/ProtectedRoute";
+import LayoutAdmin from "./components/Admin/LayoutAdmin";
+import "./styles/reset.scss";
 
 const Layout = () => {
     return (
@@ -26,6 +28,23 @@ const Layout = () => {
     );
 };
 
+// const LayoutAdmin = () => {
+//   const isAdminRoute = window.location.pathname.startsWith('/admin');
+//   const user = useSelector(state => state.account.user);
+//   const userRole = user.role;
+
+//   return (
+//     <div className='layout-app'>
+//       {isAdminRoute && userRole === 'ADMIN' && <Header />}
+//       {/* <Header /> */}
+//       <Outlet />
+//       {/* <Footer /> */}
+//       {isAdminRoute && userRole === 'ADMIN' && <Footer />}
+
+//     </div>
+//   )
+// }
+
 export default function App() {
     const dispatch = useDispatch();
     const isAuthenticated = useSelector(
@@ -33,7 +52,12 @@ export default function App() {
     );
 
     const getAccount = async () => {
-        if (window.location.pathname === "/login") return;
+        if (
+            window.location.pathname === "/login" ||
+            window.location.pathname === "/register"
+        )
+            return;
+
         const res = await callFetchAccount();
         if (res && res.data) {
             dispatch(doGetAccountAction(res.data));
@@ -49,7 +73,6 @@ export default function App() {
             path: "/",
             element: <Layout />,
             errorElement: <NotFound />,
-
             children: [
                 { index: true, element: <Home /> },
                 {
@@ -65,9 +88,8 @@ export default function App() {
 
         {
             path: "/admin",
-            element: <Layout />,
+            element: <LayoutAdmin />,
             errorElement: <NotFound />,
-
             children: [
                 {
                     index: true,
@@ -92,6 +114,7 @@ export default function App() {
             path: "/login",
             element: <LoginPage />,
         },
+
         {
             path: "/register",
             element: <RegisterPage />,
@@ -102,7 +125,8 @@ export default function App() {
         <>
             {isAuthenticated === true ||
             window.location.pathname === "/login" ||
-            window.location.pathname === "/register" ? (
+            window.location.pathname === "/register" ||
+            window.location.pathname === "/" ? (
                 <RouterProvider router={router} />
             ) : (
                 <Loading />

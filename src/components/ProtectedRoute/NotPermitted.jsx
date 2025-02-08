@@ -2,14 +2,14 @@ import { Button, Result } from "antd";
 import { useNavigate } from "react-router-dom";
 import React from "react";
 
-const NotFound = () => {
+const NotPermitted = () => {
     const navigate = useNavigate();
     return (
         <>
             <Result
-                status="404"
-                title="404"
-                subTitle="Sorry, the page you visited does not exist."
+                status="403"
+                title="403"
+                subTitle="Sorry, you are not authorized to access this page."
                 extra={
                     <Button type="primary" onClick={() => navigate("/")}>
                         Back Home
@@ -20,4 +20,4 @@ const NotFound = () => {
     );
 };
 
-export default NotFound;
+export default NotPermitted;

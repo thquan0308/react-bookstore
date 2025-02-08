@@ -26,7 +26,7 @@ export const accountSlide = createSlice({
         doGetAccountAction: (state, action) => {
 
             state.isAuthenticated = true;
-            state.user = action.payload
+            state.user = action.payload.user
         },
 
     },
