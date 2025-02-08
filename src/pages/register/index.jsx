@@ -8,25 +8,23 @@ import {
     message,
     notification,
 } from "antd";
-import "./login.scss";
+import "./register.scss";
 import { Link, useNavigate } from "react-router-dom";
-import { callLogin } from "../../services/api";
+import { callRegister } from "../../services/api";
 
-const LoginPage = () => {
+const RegisterPage = () => {
     const navigate = useNavigate();
     const [isSubmit, setIsSubmit] = useState(false);
 
     const onFinish = async (values) => {
-        const { username, password } = values;
+        const { fullName, email, password, phone } = values;
         setIsSubmit(true);
-        const res = await callLogin(username, password);
+        const res = await callRegister(fullName, email, password, phone);
         setIsSubmit(false);
 
-        if (res?.data) {
-            localStorage.setItem("access_token", res.data.access_token);
-            console.log(res);
-            message.success("Đăng nhập thành công");
-            navigate("/");
+        if (res?.data?._id) {
+            message.success("Đăng ký thành công");
+            navigate("/login");
         } else {
             notification.error({
                 message: "Có lỗi xảy ra",
@@ -40,9 +38,9 @@ const LoginPage = () => {
     };
 
     return (
-        <div className="bg-login">
+        <div className="bg-register">
             <div
-                className="login-page"
+                className="register-page"
                 style={{
                     margin: "0 auto",
                     padding: "30px",
@@ -54,7 +52,7 @@ const LoginPage = () => {
                     width: "100%",
                 }}
             >
-                <h3 style={{ textAlign: "center" }}>Đăng nhập</h3>
+                <h3 style={{ textAlign: "center" }}>Đăng ký người dùng</h3>
                 <Divider />
                 <Form
                     name="basic"
@@ -70,8 +68,21 @@ const LoginPage = () => {
                 >
                     <Form.Item
                         labelCol={{ span: 24 }}
+                        label="Họ tên"
+                        name="fullName"
+                        rules={[
+                            {
+                                required: true,
+                                message: "Please input your Full Name!",
+                            },
+                        ]}
+                    >
+                        <Input />
+                    </Form.Item>
+                    <Form.Item
+                        labelCol={{ span: 24 }}
                         label="Email"
-                        name="username"
+                        name="email"
                         rules={[
                             {
                                 required: true,
@@ -94,20 +105,33 @@ const LoginPage = () => {
                     >
                         <Input.Password />
                     </Form.Item>
+                    <Form.Item
+                        labelCol={{ span: 24 }}
+                        label="Số điện thoại"
+                        name="phone"
+                        rules={[
+                            {
+                                required: true,
+                                message: "Please input your Phone!",
+                            },
+                        ]}
+                    >
+                        <Input />
+                    </Form.Item>
                     <Form.Item>
                         <Button
                             type="primary"
                             htmlType="submit"
                             loading={isSubmit}
                         >
-                            Đăng nhập
+                            Đăng ký
                         </Button>
                     </Form.Item>
                     <Divider>Or</Divider>
                     <p className="text text-normal">
-                        Chưa có tài khoản ?
+                        Đã có tài khoản ?
                         <span>
-                            <Link to="/register"> Đăng ký</Link>
+                            <Link to="/login"> Đăng nhập</Link>
                         </span>
                     </p>
                 </Form>
@@ -116,4 +140,4 @@ const LoginPage = () => {
     );
 };
 
-export default LoginPage;
+export default RegisterPage;

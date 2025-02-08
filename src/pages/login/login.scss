@@ -1,0 +1,14 @@
+body {
+    margin : 0;
+    padding: 0;
+}
+
+.bg-login {
+    background-color: #f0f2f5;
+    min-height      : 100vh;
+    width           : 100vw;
+    /* Đảm bảo full màn hình */
+    display         : flex;
+    align-items     : center;
+    justify-content : center;
+}
