@@ -4,7 +4,7 @@
         user-select        : none;
         -moz-user-select   : none;
         -webkit-user-select: none;
-        height             : 55px;
+        height             : 60px;
         color              : #808089;
         width              : 100%;
         max-width          : 1440px;
@@ -111,7 +111,7 @@
 
         .icon-cart {
             font-size: 30px;
-            top      : 10px;
+            top      : 15px;
             position : relative;
             color    : #61dafb;
         }
@@ -143,8 +143,7 @@
             height : auto;
 
             &__item {
-                opacity: 0.8;
-                display: inline-block;
+
 
                 &:hover {
                     cursor : pointer;

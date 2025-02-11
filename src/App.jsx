@@ -17,39 +17,28 @@ import AdminPage from "./pages/admin";
 import ProtectedRoute from "./components/ProtectedRoute";
 import LayoutAdmin from "./components/Admin/LayoutAdmin";
 import "./styles/reset.scss";
+import "./styles/global.scss";
+import ManageUserPage from "./pages/admin/user";
+import ManageBookPage from "./pages/admin/book";
+import OrderPage from "./pages/order";
+import HistoryPage from "./pages/history";
+import AdminOrderPage from "./pages/admin/order";
 
 const Layout = () => {
+    const [searchTerm, setSearchTerm] = useState("");
+
     return (
         <div className="layout-app">
-            <Header />
-            <Outlet />
+            <Header searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
+            <Outlet context={[searchTerm, setSearchTerm]} />
             <Footer />
         </div>
     );
 };
 
-// const LayoutAdmin = () => {
-//   const isAdminRoute = window.location.pathname.startsWith('/admin');
-//   const user = useSelector(state => state.account.user);
-//   const userRole = user.role;
-
-//   return (
-//     <div className='layout-app'>
-//       {isAdminRoute && userRole === 'ADMIN' && <Header />}
-//       {/* <Header /> */}
-//       <Outlet />
-//       {/* <Footer /> */}
-//       {isAdminRoute && userRole === 'ADMIN' && <Footer />}
-
-//     </div>
-//   )
-// }
-
 export default function App() {
     const dispatch = useDispatch();
-    const isAuthenticated = useSelector(
-        (state) => state.account.isAuthenticated
-    );
+    const isLoading = useSelector((state) => state.account.isLoading);
 
     const getAccount = async () => {
         if (
@@ -80,8 +69,24 @@ export default function App() {
                     element: <ContactPage />,
                 },
                 {
-                    path: "book",
+                    path: "book/:slug",
                     element: <BookPage />,
+                },
+                {
+                    path: "order",
+                    element: (
+                        <ProtectedRoute>
+                            <OrderPage />
+                        </ProtectedRoute>
+                    ),
+                },
+                {
+                    path: "history",
+                    element: (
+                        <ProtectedRoute>
+                            <HistoryPage />
+                        </ProtectedRoute>
+                    ),
                 },
             ],
         },
@@ -101,11 +106,27 @@ export default function App() {
                 },
                 {
                     path: "user",
-                    element: <ContactPage />,
+                    element: (
+                        <ProtectedRoute>
+                            <ManageUserPage />
+                        </ProtectedRoute>
+                    ),
                 },
                 {
                     path: "book",
-                    element: <BookPage />,
+                    element: (
+                        <ProtectedRoute>
+                            <ManageBookPage />
+                        </ProtectedRoute>
+                    ),
+                },
+                {
+                    path: "order",
+                    element: (
+                        <ProtectedRoute>
+                            <AdminOrderPage />
+                        </ProtectedRoute>
+                    ),
                 },
             ],
         },
@@ -123,10 +144,11 @@ export default function App() {
 
     return (
         <>
-            {isAuthenticated === true ||
+            {isLoading === false ||
             window.location.pathname === "/login" ||
             window.location.pathname === "/register" ||
-            window.location.pathname === "/" ? (
+            window.location.pathname === "/" ||
+            window.location.pathname.startsWith("/book") ? (
                 <RouterProvider router={router} />
             ) : (
                 <Loading />
