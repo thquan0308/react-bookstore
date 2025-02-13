@@ -53,10 +53,10 @@ Website được xây dựng trên nền tảng ReactJS và NodeJS trong môi tr
 ### Giao diện website
 
 -   Giao diện trang chủ
-    ![Giao diện trang chủ](src/assets/1.png)
+    ![Giao diện trang chủ](src/assets/1.PNG)
 
 -   Giao diện quản lý của quản trị viên
-    ![Giao diện admin](src/assets/2.png)
+    ![Giao diện admin](src/assets/2.PNG)
 
 ### Link dự án
 
