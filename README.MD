@@ -1,39 +1,83 @@
-# React Vite (React Test Fresher)
-Template này được sử dụng cho series React Test Fresher của tác giả Hỏi Dân IT (Eric)
-- React 18
-- React Router 6
-- Redux Tookit
-- Vite 4
+# BOOKSTORE
 
-### Môi trường chạy dự án: Node.js v16.13.1
-https://nodejs.org/download/release/v16.13.1/
+### Các công nghệ sử dụng:
 
-## Về tác giả
-Mọi thông tin về Tác giả Hỏi Dân IT, các bạn có thể tìm kiếm tại đây:
+ReactJS, Node.js, Express.js, MongoDB, Bootstrap
 
-Website chính thức: https://hoidanit.vn/
+### Môi trường cài đặt và công nghệ sử dụng:
 
-Youtube “Hỏi Dân IT” : https://www.youtube.com/@hoidanit
+Website được xây dựng trên nền tảng ReactJS và NodeJS trong môi trường phần mềm Visual Studio Code. Các công nghệ sử dụng bao gồm:
 
-Tiktok “Hỏi Dân IT” :  https://www.tiktok.com/@hoidanit
+Frontend:
 
-Fanpage “Hỏi Dân IT” : https://www.facebook.com/askITwithERIC/
+ReactJS: Sử dụng cả React Hooks và React Class Components để xây dựng giao diện người dùng. ReactJS giúp xây dựng các giao diện động và dễ dàng quản lý trạng thái.
 
-Udemy Hỏi Dân IT: https://www.udemy.com/user/eric-7039/
+Bootstrap: Thư viện giao diện người dùng giúp xây dựng các thành phần đẹp mắt và dễ sử dụng với thiết kế hiện đại.
 
-===
+HTML, CSS, Javascript: CSS được sử dụng để viết mã CSS một cách có cấu trúc và dễ bảo trì, trong khi JavaScript được dùng cho các logic xử lý trên client-side.
 
-Các bước cài đặt: (chế độ development)
-1. clone code
-2. cài đặt thư viện: npm i
-3. Update file .env.development (nếu cần thiết)
-4. Chạy dự án: npm run dev
+Backend:
 
-===
+NodeJS: Được sử dụng để xây dựng server-side của ứng dụng, với khả năng xử lý đồng thời rất hiệu quả.
 
-Cách chạy tại chế độ production:
-1. clone code
-2. cài đặt thư viện: npm i
-3. Update file .env.production (nếu cần thiết)
-4. Build dự án: npm run build
-5. Chạy dự án: npm run preview
+ExpressJS: Framework hỗ trợ việc xây dựng các API RESTful đơn giản và dễ hiểu trên nền tảng NodeJS.
+
+RESTful API: Backend triển khai các API RESTful để frontend và backend giao tiếp với nhau thông qua các HTTP requests (GET, POST, PUT, DELETE).
+
+Cơ sở dữ liệu:
+
+MongoDB: Dùng để lưu trữ dữ liệu ứng dụng. MongoDB là cơ sở dữ liệu NoSQL, phù hợp với mô hình dữ liệu linh hoạt và mở rộng.
+
+Mongoose: Là thư viện ODM (Object Data Modeling) được sử dụng để giao tiếp với MongoDB. Mongoose giúp dễ dàng tạo và quản lý các schema và model, giúp thao tác với dữ liệu MongoDB trở nên thuận tiện và an toàn.
+
+Schema: Định nghĩa cấu trúc của các document trong MongoDB.
+
+Model: Các đối tượng tương ứng với các schema trong cơ sở dữ liệu, giúp thực hiện các thao tác CRUD (Create, Read, Update, Delete).
+
+### Về tính năng của hệ thống:
+
+Đăng ký và quản lý tài khoản: Người dùng có thể đăng ký, cập nhật thông tin, đổi mật khẩu và khôi phục mật khẩu qua email. Quản trị viên có thể quản lý tài khoản (thêm, sửa, xóa, khóa/mở khóa).
+
+Quản lý sách: Quản trị viên có thể thêm, sửa, xóa thông tin sách. Người dùng có thể tìm kiếm sách theo nhiều tiêu chí khác nhau.
+
+Quản lý giỏ hàng: Người dùng có thể thêm, xóa, cập nhật số lượng sách trong giỏ hàng.
+
+Thanh toán: Hệ thống hỗ trợ phương thức thanh toán khi nhận hàng (COD), giúp khách hàng dễ dàng thanh toán khi nhận sản phẩm.
+
+Quản lý đơn hàng: Người dùng có thể xem lịch sử đơn hàng, quản trị viên có thể quản lý và cập nhật trạng thái đơn hàng.
+
+Quản lý khuyến mãi: Quản trị viên có thể tạo và quản lý các chương trình khuyến mãi, áp dụng cho các đơn hàng.
+
+Phân quyền người dùng: Quản trị viên có toàn quyền quản lý hệ thống, người dùng chỉ xem được thông tin cá nhân và lịch sử đơn hàng.
+
+### Giao diện website
+
+Giao diện trang chủ
+
+Giao diện trang chủ
+
+Giao diện trang chủ
+
+Giao diện trang chủ
+
+Giao diện quản lý của quản trị viên
+
+Giao diện quản lý của quản trị viên
+
+### Link dự án
+
+Link FE: https://github.com/thquan0308/React-Bookstore
+
+Link BE: https://github.com/thquan0308/NodeJS-Bookstore
+
+### Các bước cài đặt:
+
+Cài đặt ứng dụng ReactJS: Gõ lệnh
+
+npm install
+npm start
+Các phiên bản sử dụng:
+
+Node version v16.13.1
+
+Npm version 8.1.2

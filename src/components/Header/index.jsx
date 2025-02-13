@@ -125,7 +125,7 @@ const Header = (props) => {
                                 <span onClick={() => navigate("/")}>
                                     {" "}
                                     <FaReact className="rotate icon-react" />
-                                    Hỏi Dân !T
+                                    THQ STORE
                                 </span>
 
                                 <VscSearchFuzzy className="icon-search" />
@@ -156,6 +156,7 @@ const Header = (props) => {
                                         count={carts?.length ?? 0}
                                         size={"small"}
                                         showZero
+                                        offset={[0, 15]} // Dịch xuống 5px
                                     >
                                         <FiShoppingCart className="icon-cart" />
                                     </Badge>
