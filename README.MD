@@ -2,7 +2,14 @@
 
 ### Các công nghệ sử dụng:
 
-ReactJS, Node.js, Express.js, MongoDB, Bootstrap
+-   Frontend
+    -   Core: React, Vite
+    -   Routing: React Router
+    -   State: Redux, Redux Persist
+    -   UI: Ant Design, Bootstrap
+    -   API: Axios
+    -   Style: Sass
+    -   File: XLSX
 
 ### Môi trường cài đặt và công nghệ sử dụng:
 
